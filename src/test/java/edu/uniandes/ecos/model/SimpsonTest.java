@@ -33,7 +33,7 @@ public class SimpsonTest extends TestCase {
      */
     public void testObtenerP() {
         System.out.println("ObtenerP");
-        Simpson instance = new Simpson(1.1D, 10D);
+        Simpson instance = new Simpson(9, 1.1D, 10D);
         
         double expResult = 0.350058636897201D;
         double result = instance.ObtenerP();
@@ -48,7 +48,7 @@ public class SimpsonTest extends TestCase {
     public void testCalcularFactorial() {
         System.out.println("CalcularFactorial");
         double numero = 4.5D;
-         Simpson instance = new Simpson(1.1D, 10D);
+         Simpson instance = new Simpson(9,1.1D, 10D);
         double expResult = 11.63173;
         double result = instance.CalcularFactorial(numero);
         assertEquals(expResult, result, 0.00001);

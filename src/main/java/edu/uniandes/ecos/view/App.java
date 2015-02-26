@@ -15,6 +15,7 @@ import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 
+
 /**
  * Hello world!
  *
@@ -24,7 +25,7 @@ public class App extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        Simpson datos = new Simpson( 0, 0);
+        Simpson datos = new Simpson(0, 0, 0);
         GestorNegocio.showHome(req, resp);
         GestorNegocio.showResults(req, resp, datos);
 
@@ -33,11 +34,12 @@ public class App extends HttpServlet {
     public void consoleInput(HttpServletRequest req, HttpServletResponse resp) throws Exception {
        
         Double parameterX = Double.parseDouble(req.getParameter("paraX"));
-        Double numSegmentos = Double.parseDouble(req.getParameter("numSeg"));
+        Double gradosLibertad = Double.parseDouble(req.getParameter("numGrad"));
+        
         GestorNegocio gestorNegocio = new GestorNegocio();
        
 
-        Simpson resultado = gestorNegocio.GestorNegocio(parameterX, numSegmentos );
+        Simpson resultado = gestorNegocio.GestorNegocio( parameterX, gradosLibertad,10);
         gestorNegocio.showResults(req, resp, resultado);
     }
 

@@ -22,7 +22,7 @@ public class PrettyPrinting {
     public static void test1() {
 
       
-        Simpson calculos = new Simpson(1.1, 10);
+        Simpson calculos = new Simpson(9, 1.1, 10);
          System.out.println("integral Definitiva:" + calculos.ObtenerP());
     }
 

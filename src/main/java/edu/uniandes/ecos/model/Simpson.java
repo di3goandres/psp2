@@ -12,7 +12,9 @@ package edu.uniandes.ecos.model;
 public class Simpson {
 
     public double factorialnum = 0d;
-    public double dof = 9d;
+    public double dof = 0d;
+    public double parameterX = 0d;
+
     private double parameterE = 0.00001;
     private double num_seg = 0;
     private double parameterW = 0;
@@ -28,8 +30,9 @@ public class Simpson {
      * @param parameterNumSeg parametro numero de segmentos en los cuales se va
      * dividir
      */
-    public Simpson(double parameterXP, double parameterNumSeg) {
-
+    public Simpson(double dofP, double parameterXP, double parameterNumSeg) {
+        this.dof = dofP;
+        this.parameterX = parameterXP;
         if (parameterNumSeg == 0) {
             this.integralDefinitiva = 0;
         } else {
@@ -74,6 +77,16 @@ public class Simpson {
     public double ObtenerP() {
 
         return this.integralDefinitiva;
+    }
+
+    public double ObtenerParameterX() {
+
+        return this.parameterX;
+    }
+
+    public double ObtenerDof() {
+
+        return this.dof;
     }
 
     /**
