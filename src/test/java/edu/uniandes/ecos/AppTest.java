@@ -5,8 +5,11 @@ import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
 /**
- * Unit test for simple App.
- */
+* 
+* @author Diego Andres Montealegre Garcia
+* @version 1.0, 02/22/05
+* @since 1.0
+*/
 public class AppTest 
     extends TestCase
 {
