@@ -1,7 +1,19 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Copyright (C) 2015 Diego Andres Montealegre Garcia
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 package edu.uniandes.ecos.controller;
 
@@ -22,17 +34,28 @@ import javax.servlet.http.HttpServletResponse;
 public class GestorNegocio {
 
     /**
+     * En el constructor de la clase negocio, instanciamos la clase simpson para
+     * generar los calculos correspondientes
      *
-     * @param parameterX
-     * @param gradosLibertad
-     * @param numSegmentos
-     * @return
+     * @param parameterX parametro de tipo double
+     * @param gradosLibertad parametro de tipo double
+     * @param numSegmentos parametro de tipo double
+     * @return una instancia de la clase Simpson
      */
     public Simpson GestorNegocio(double parameterX, double gradosLibertad, double numSegmentos) {
         Simpson calculotIntegral = new Simpson(gradosLibertad, parameterX, numSegmentos);
         return calculotIntegral;
     }
 
+    /**
+     * Metodo que muestra en web la pantalla de inicio
+     *
+     * @param req parametro tipo HttpServletRequest
+     * @param resp parametro tipo HttpServletResponse
+     * @throws ServletException lanza una excepcion de este tipo
+     * ServletException
+     * @throws IOException lanza una excepcion de este tipo IOException
+     */
     public static void showHome(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
 
@@ -54,6 +77,16 @@ public class GestorNegocio {
 
     }
 
+    /**
+     * Metodo para mostrar en la pantalla web el resultado de los calculos
+     *
+     * @param req parametro tipo HttpServletRequest
+     * @param resp parametro tipo HttpServletResponse
+     * @param resultado instancia de la clase Simpson
+     * @throws ServletException lanza una excepcion de este tipo
+     * ServletException
+     * @throws IOException lanza una excepcion de este tipo IOException
+     */
     public static void showResults(HttpServletRequest req, HttpServletResponse resp,
             Simpson resultado)
             throws ServletException, IOException {
@@ -79,14 +112,19 @@ public class GestorNegocio {
                 + "</td></tr>"
                 + "</table> "
         );
-
-
-       
-
         resp.getWriter().println("<hr>");
 
     }
 
+    /**
+     * Metod que en caso de error es ejecutado
+     *
+     * @param req parametro tipo HttpServletRequest
+     * @param resp parametro tipo HttpServletResponse
+     * @throws ServletException lanza una excepcion de este tipo
+     * ServletException
+     * @throws IOException lanza una excepcion de este tipo IOException
+     */
     public static void error(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         resp.getWriter().println("Error!!!");

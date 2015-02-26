@@ -1,25 +1,60 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Copyright (C) 2015 Diego Andres Montealegre Garcia
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
+
 package edu.uniandes.ecos.model;
 
 /**
- *
- * @author COCO
- */
+* 
+* @author Diego Andres Montealegre Garcia
+* @version 1.0, 02/22/05
+* @since 1.0
+*/
 public class Simpson {
 
-    public double factorialnum = 0d;
+    /**
+     * variable que guardara los grados de libertad
+     */
     public double dof = 0d;
+    
+    /**
+     * variable que guardara el valor del parametro X ingresado
+     */
     public double parameterX = 0d;
-
-    private double parameterE = 0.00001;
-    private double num_seg = 0;
-    private double parameterW = 0;
-    private double integralInicialP = 0;
-    private double integralDefinitiva = 0;
+    /**
+     * variable que guardara el valor del parametro E (error minimo) 
+     */
+    private double parameterE;
+     /**
+     * variable que guardara el valor del numero de segmentos
+     */
+    private double num_seg;
+     /**
+     * variable que guardara el valor del parametro W
+     */
+    private double parameterW;
+     /**
+     * variable que guardara el valor de la integral inicial
+     */
+    private double integralInicialP;
+     /**
+     * variable que guardara el valor de la integral definitiva
+     */
+    private double integralDefinitiva;
 
     /**
      * Constructor de la clase
@@ -31,6 +66,11 @@ public class Simpson {
      * dividir
      */
     public Simpson(double dofP, double parameterXP, double parameterNumSeg) {
+        this.integralDefinitiva = 0;
+        this.integralInicialP = 0;
+        this.parameterW = 0;
+        this.num_seg = parameterNumSeg;
+        this.parameterE = 0.00001;
         this.dof = dofP;
         this.parameterX = parameterXP;
         if (parameterNumSeg == 0) {
@@ -52,7 +92,13 @@ public class Simpson {
 
     }
 
-    private Double Calcular(double parameterXP, double parameterNumSeg) {
+    /**
+     * metodo encargado de hacer los calculos de las integrales y devolver el resultado 
+     * @param parameterXP parametro tipo double
+     * @param parameterNumSeg parametro tipo double
+     * @return retorna el resultado de los calculos que es de tipo double
+     */
+    public Double Calcular(double parameterXP, double parameterNumSeg) {
         double calculos = 0d;
         this.num_seg = parameterNumSeg;
 
@@ -69,21 +115,38 @@ public class Simpson {
 
     }
 
+    public Simpson() {
+        this.integralDefinitiva = 0;
+        this.integralInicialP = 0;
+        this.parameterW = 0;
+        this.num_seg = 0;
+        this.parameterE = 0.00001;
+    }
+
     /**
      * metodo que retorna ya el valor calculado del parametro P
      *
-     * @return
+     * @return retorna la variable integral definitiva
      */
     public double ObtenerP() {
 
         return this.integralDefinitiva;
     }
 
+    /**
+     * Retorna el valor del parametro X
+     *
+     * @return retorna la variable parameterX
+     */
     public double ObtenerParameterX() {
 
         return this.parameterX;
     }
 
+    /**
+     * Metodo que retorna el valor de dof, o variable de grados de libertad.
+     * @return retorna la variable dof
+     */
     public double ObtenerDof() {
 
         return this.dof;
