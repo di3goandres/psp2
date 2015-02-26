@@ -14,11 +14,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
-* 
-* @author Diego Andres Montealegre Garcia
-* @version 1.0, 02/22/05
-* @since 1.0
-*/
+ *
+ * @author Diego Andres Montealegre Garcia
+ * @version 1.0, 02/22/05
+ * @since 1.0
+ */
 public class GestorNegocio {
 
     /**
@@ -60,13 +60,29 @@ public class GestorNegocio {
         PrintWriter pw = resp.getWriter();
         resp.getWriter().println("<hr>");
         resp.getWriter().println("<h2>Resultados</h2>");
-        pw.write("<form action=\"calc\" method=\"post\">"
+
+        pw.write("<table  border=\"1\">"
+                + "<tr><th>Resultados</th><th>Test Utilizados</th></th>"
+                + "<tr><td>"
                 + "<table>"
                 + "<tr><td>0 to X: </td><td>" + resultado.ObtenerParameterX() + " </td></tr>"
                 + "<tr><td>Grados de libertad (dof): </td><td>" + resultado.ObtenerDof() + "</td></tr>"
                 + "<tr><td>Integral Definitiva: </td><td>" + resultado.ObtenerP() + "</td></tr>"
+                + "</table></td> "
+                + "<td>"
+                + "<table border=\"1\">"
+                + "<tr><th>0 to X: </th><th>Grados de libertad (dof): </th><th>Valor esperado</th></tr>"
+                + "<tr><td>1.1</td><td>9</td><td>0.35006</td></tr>"
+                + "<tr><td>1.1812</td><td>10</td><td>0.36757</td></tr>"
+                + "<tr><td>2.750</td><td>30</td><td>0.49500</td></tr>"
                 + "</table> "
-                + "</form> ");
+                + "</td></tr>"
+                + "</table> "
+        );
+
+
+       
+
         resp.getWriter().println("<hr>");
 
     }
